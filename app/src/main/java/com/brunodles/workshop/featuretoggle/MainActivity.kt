@@ -22,6 +22,8 @@ class MainActivity : AppCompatActivity() {
         bottomNavigation = findViewById(R.id.bottom_navigation)
         bottomNavigation.setOnNavigationItemSelectedListener(this::onItemSelected)
         showOnContent(dashboard)
+        if (true) // SHOW_ABOUT - Simple feature toggle
+            bottomNavigation.menu.removeItem(R.id.about)
     }
 
     fun onItemSelected(item: MenuItem): Boolean {

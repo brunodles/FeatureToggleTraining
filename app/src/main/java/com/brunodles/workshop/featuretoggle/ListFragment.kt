@@ -2,6 +2,7 @@ package com.brunodles.workshop.featuretoggle
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -20,10 +21,13 @@ class ListFragment : Fragment() {
     }
 
     private fun setupRecyclerView(recycler: RecyclerView) {
-        recycler.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        recycler.adapter = ContentAdapter(onClickListener = { position -> // named parameter
-            startActivity(DetailActivity.newIntent(context, position))
+        recycler.layoutManager = if (true) // SHOW_LIST_AS_LIST
+            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        else
+            GridLayoutManager(context, 3, LinearLayoutManager.VERTICAL, false)
 
+        recycler.adapter = ContentAdapter(onClickListener = { position ->
+            startActivity(DetailActivity.newIntent(context, position))
         })
     }
 }
