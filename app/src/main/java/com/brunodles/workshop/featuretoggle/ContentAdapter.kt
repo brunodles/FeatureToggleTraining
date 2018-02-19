@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 
-class ContentAdapter : RecyclerView.Adapter<ContentAdapter.ViewHolder>() {
+class ContentAdapter(private val onClickListener: (position: Int) -> Unit) : RecyclerView.Adapter<ContentAdapter.ViewHolder>() {
 
     companion object {
         private const val SIZE: Int = 100
@@ -14,6 +14,9 @@ class ContentAdapter : RecyclerView.Adapter<ContentAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.text.text = position.toString()
+        holder.itemView.setOnClickListener {
+            onClickListener.invoke(position)
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

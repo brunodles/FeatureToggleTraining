@@ -17,10 +17,13 @@ class DashboardFragment : Fragment() {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view?.let {
-            val recycler: RecyclerView = it.findViewById(R.id.recyclerView)
-            recycler.layoutManager = GridLayoutManager(context, 3, LinearLayoutManager.VERTICAL, false)
-            recycler.adapter = ContentAdapter()
+        view?.let { setupRecyclerView(it.findViewById(R.id.recyclerView)) }
+    }
+
+    private fun setupRecyclerView(recycler: RecyclerView) {
+        recycler.layoutManager = GridLayoutManager(context, 3, LinearLayoutManager.VERTICAL, false)
+        recycler.adapter = ContentAdapter { position -> // onClickListener, no round brackets
+            startActivity(DetailActivity.newIntent(context, position))
         }
     }
 }

@@ -16,10 +16,14 @@ class ListFragment : Fragment() {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view?.let {
-            val recycler: RecyclerView = it.findViewById(R.id.recyclerView)
-            recycler.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-            recycler.adapter = ContentAdapter()
-        }
+        view?.let { setupRecyclerView(it.findViewById(R.id.recyclerView)) }
+    }
+
+    private fun setupRecyclerView(recycler: RecyclerView) {
+        recycler.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        recycler.adapter = ContentAdapter(onClickListener = { position -> // named parameter
+            startActivity(DetailActivity.newIntent(context, position))
+
+        })
     }
 }
