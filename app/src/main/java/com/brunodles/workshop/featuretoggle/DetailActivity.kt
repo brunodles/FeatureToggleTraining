@@ -20,8 +20,18 @@ class DetailActivity : AppCompatActivity() {
     companion object {
 
         const val EXTRA_POSITION = "EXTRA_POSITION"
+        private const val ACTION_NEW_DETAILS = "com.brunodles.workshop.featuretoggle.ACTION_NEW_DETAILS"
 
-        fun newIntent(context: Context, position: Int) = Intent(context, DetailActivity::class.java)
-                .putExtra(EXTRA_POSITION, position)
+        fun newIntent(context: Context, position: Int): Intent {
+            if (false) { // toggle: USE_NEW_DETAILS
+                val intent = Intent(ACTION_NEW_DETAILS)
+                        .addCategory(context.packageName)
+                        .putExtra(EXTRA_POSITION, position)
+                if (intent.resolveActivity(context.packageManager) != null)
+                    return intent
+            }
+            return Intent(context, DetailActivity::class.java)
+                    .putExtra(EXTRA_POSITION, position)
+        }
     }
 }

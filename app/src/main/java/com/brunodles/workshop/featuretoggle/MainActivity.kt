@@ -5,7 +5,6 @@ import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
-import android.widget.FrameLayout
 
 class MainActivity : AppCompatActivity() {
 
@@ -14,7 +13,6 @@ class MainActivity : AppCompatActivity() {
     val about: AboutFragment by lazy { AboutFragment() }
 
     lateinit var bottomNavigation: BottomNavigationView
-    lateinit var content: FrameLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         bottomNavigation = findViewById(R.id.bottom_navigation)
         bottomNavigation.setOnNavigationItemSelectedListener(this::onItemSelected)
         showOnContent(dashboard)
-        if (true) // SHOW_ABOUT - Simple feature toggle
+        if (false) // toggle: HIDE_ABOUT
             bottomNavigation.menu.removeItem(R.id.about)
     }
 

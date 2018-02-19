@@ -8,24 +8,26 @@
   >
 
   <TextView
+    android:id="@+id/chosen"
+    style="@style/TextAppearance.AppCompat.Display4"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    tools:text="1"
+    />
+
+  <TextView
     android:id="@+id/label"
     style="@style/TextAppearance.AppCompat.Headline"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="16dp"
-    android:text="Você tocou em: "
+    android:text="foi tocado"
     app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    />
-
-  <TextView
-    android:id="@+id/chosen"
-    style="@style/TextAppearance.AppCompat.Display1"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    app:layout_constraintBaseline_toBaselineOf="@+id/label"
-    app:layout_constraintLeft_toRightOf="@+id/label"
-    tools:text="1"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/chosen"
     />
 
   <TextView
@@ -33,7 +35,7 @@
     android:layout_height="wrap_content"
     android:layout_margin="16dp"
     android:gravity="center"
-    android:text="App Detail Activity"
+    android:text="New Detail Activity"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
