@@ -1,6 +1,13 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
+Properties flags = new Properties()
+try {
+    rootProject.file("flags.properties").withInputStream { flags.load(it) }
+} catch (Exception exception) {
+    println "Failed to load flags.properties. ${exception.message}"
+}
+
 android {
     compileSdkVersion 26
     defaultConfig {
@@ -11,6 +18,14 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
+
+        flags.propertyNames().each { key ->
+            buildConfigField "boolean", key, "DEBUG && ${flags.getProperty(key)}"
+        }
+
+        // templatede buildConfigField
+        // buildConfigField "<tipo>", "<nome da flag>", "<valor>"
+
     }
     buildTypes {
         release {
@@ -21,7 +36,8 @@ android {
 }
 
 dependencies {
-//    implementation project(":newDetails") // toggle: USE_NEW_DETAILS
+    if (flags.getProperty("FLAG_USE_NEW_DETAILS")?.toBoolean() ?: false)
+        implementation project(":newDetails") // toggle: FLAG_USE_NEW_DETAILS
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     implementation 'com.android.support:appcompat-v7:26.1.0'
@@ -34,4 +50,12 @@ dependencies {
 
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+}
+
+
+task printProps {
+    doFirst {
+        println flags.getProperty("application.name")
+        println flags.getProperty("project.name")
+    }
 }

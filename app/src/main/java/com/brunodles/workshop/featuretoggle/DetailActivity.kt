@@ -23,7 +23,7 @@ class DetailActivity : AppCompatActivity() {
         private const val ACTION_NEW_DETAILS = "com.brunodles.workshop.featuretoggle.ACTION_NEW_DETAILS"
 
         fun newIntent(context: Context, position: Int): Intent {
-            if (false) { // toggle: USE_NEW_DETAILS
+            if (false) { // featureToggle: FLAG_USE_NEW_DETAILS
                 val intent = Intent(ACTION_NEW_DETAILS)
                         .addCategory(context.packageName)
                         .putExtra(EXTRA_POSITION, position)

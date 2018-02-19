@@ -21,7 +21,7 @@ class ListFragment : Fragment() {
     }
 
     private fun setupRecyclerView(recycler: RecyclerView) {
-        recycler.layoutManager = if (true) // toggle: SHOW_LIST_AS_LIST
+        recycler.layoutManager = if (true) // featureToggle: FLAG_SHOW_LIST_AS_LIST
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         else
             GridLayoutManager(context, 3, LinearLayoutManager.VERTICAL, false)
