@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         bottomNavigation = findViewById(R.id.bottom_navigation)
         bottomNavigation.setOnNavigationItemSelectedListener(this::onItemSelected)
         showOnContent(dashboard)
-        if (false) // featureToggle: FLAG_HIDE_ABOUT
+        if (BuildConfig.FLAG_HIDE_ABOUT)
             bottomNavigation.menu.removeItem(R.id.about)
     }
 

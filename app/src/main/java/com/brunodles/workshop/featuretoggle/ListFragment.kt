@@ -21,10 +21,10 @@ class ListFragment : Fragment() {
     }
 
     private fun setupRecyclerView(recycler: RecyclerView) {
-        recycler.layoutManager = if (true) // featureToggle: FLAG_SHOW_LIST_AS_LIST
+        recycler.layoutManager = if (BuildConfig.FLAG_SHOW_LIST_AS_LIST)
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         else
-            GridLayoutManager(context, 3, LinearLayoutManager.VERTICAL, false)
+            GridLayoutManager(context, 2, LinearLayoutManager.VERTICAL, false)
 
         recycler.adapter = ContentAdapter(onClickListener = { position ->
             startActivity(DetailActivity.newIntent(context, position))
