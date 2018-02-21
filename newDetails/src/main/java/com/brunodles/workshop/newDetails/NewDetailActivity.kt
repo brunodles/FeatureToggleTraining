@@ -1,9 +1,8 @@
-package com.brunodles.workshop.featuretoggle.newDetails
+package com.brunodles.workshop.newDetails
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.TextView
-import com.brunodles.workshop.featuretoggle.R
 
 class NewDetailActivity : AppCompatActivity() {
 

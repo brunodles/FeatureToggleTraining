@@ -23,9 +23,6 @@ android {
             buildConfigField "boolean", key, "DEBUG && ${flags.getProperty(key)}"
         }
 
-        // templatede buildConfigField
-        // buildConfigField "<tipo>", "<nome da flag>", "<valor>"
-
     }
     buildTypes {
         release {
@@ -37,7 +34,7 @@ android {
 
 dependencies {
     if (flags.getProperty("FLAG_USE_NEW_DETAILS")?.toBoolean() ?: false)
-        implementation project(":newDetails") // toggle: FLAG_USE_NEW_DETAILS
+        implementation project(":newDetails")
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     implementation 'com.android.support:appcompat-v7:26.1.0'

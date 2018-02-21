@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest
   xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.brunodles.workshop.featuretoggle"
+  package="com.brunodles.workshop.newDetails"
   >
 
   <application android:theme="@style/AppTheme">
-    <activity android:name=".newDetails.NewDetailActivity">
+    <activity android:name=".NewDetailActivity">
       <intent-filter>
         <action android:name="com.brunodles.workshop.featuretoggle.ACTION_NEW_DETAILS"/>
 
